@@ -36,7 +36,40 @@ public class ArvoreAVL {
                 }
             }
         }
+        printPosOrdem(getRaiz());
     }
+
+    public void printPosOrdem(No no){
+        if(no == null){
+            return;
+        }
+    
+        printPosOrdem(no.getEsquerda());
+    
+        printPosOrdem(no.getDireita());
+    
+        if(fatorBalanciamento(no) > 1 || fatorBalanciamento(no) < -1 ){
+            if(fatorBalanciamento(no) > 1 ){
+                rotacaoDireita(no);
+            }
+        }
+      }
+
+    /* public void ajustarArvore(){
+        No inicio = getRaiz();
+
+        if(inicio !=  null){
+            inicio = inicio.getEsquerda();
+        }
+
+        int fb = fatorBalanciamento(no);
+        if(fb > 1 || fb < -1){
+            if (fb > 1 && fatorBalanciamento(no.getEsquerda()) > 1){
+                rotacaoDireita(no);
+            }
+        }
+    }
+         */
 
     public int altura(No no){
         if(no.getEsquerda() == null && no.getDireita() == null){
@@ -64,19 +97,20 @@ public class ArvoreAVL {
     }
 
     public void rotacaoDireita(No avo){
-        avo.getEsquerda().getPai() = avo.getPai();
+        //
+        avo.getEsquerda().setPai(avo.getPai());
         if(avo.getPai() != null){
-            avo.getPai().getEsquerda() = avo.getEsquerda();
+            avo.getPai().setEsquerda(avo.getEsquerda());
         } else {
             raiz = avo.getEsquerda();
         }
-        avo.getPai() = avo.getEsquerda();
+        avo.setPai(avo.getEsquerda());
         avo.setEsquerda( avo.getEsquerda().getDireita());
 
         if(avo.getEsquerda() != null){
-            avo.getEsquerda().getPai() = avo;
+            avo.getEsquerda().setPai(avo);
         }
-        avo.getPai().getDireita() = avo;
+        avo.getPai().setDireita(avo);
     }
 
     public No getRaiz() {

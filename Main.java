@@ -12,8 +12,11 @@ public class Main {
         a.inserirNo(50);
         a.inserirNo(45);
 
-        System.out.println(a.altura(a.getRaiz()));
-        System.out.println(a.getRaiz().getEsquerda().getPai().getDado());
+        
+        System.out.println(a.getRaiz().getDado());
+        System.out.println(a.getRaiz().getDireita().getDado());
+        System.out.println(a.getRaiz().getDireita().getEsquerda().getDado());
+        System.out.println(a.getRaiz().getDireita().getEsquerda().getEsquerda().getDado());
         
     }
 }

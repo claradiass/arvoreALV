@@ -13,7 +13,7 @@ public class Main {
         a.inserirNo(45);
 
         System.out.println(a.altura(a.getRaiz()));
-        System.out.println(a.getRaiz().getEsquerda().getPai().getDado());
+        System.out.println(a.getRaiz().getEsquerda().getEsquerda().getPai().getDado());
         
     }
 }
